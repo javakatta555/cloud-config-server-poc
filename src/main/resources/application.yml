@@ -1,0 +1,20 @@
+server:
+  port: 8081  # Port for the Config Server
+
+
+spring:
+  cloud:
+    config:
+      server:
+        native:
+          searchLocations:
+            - file:${FILE_CONFIG_BASE_PATH}/configurations/{application}
+            - file:${FILE_CONFIG_BASE_PATH}/env-vars/${ENV_NAMESPACE}/application/{application}
+            - file:${FILE_CONFIG_BASE_PATH}/env-vars/${ENV_NAMESPACE}/infra
+
+
+
+
+
+
+

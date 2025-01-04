@@ -1,0 +1,45 @@
+server:
+  port: 8888  # Config server port
+
+
+spring:
+  #profiles:
+  #active: native
+  cloud:
+    config:
+      server:
+        kubernetes:
+          authentication:
+            serviceAccount: false  # If running locally, use the kubeconfig file instead
+            tokenFile: /Users/admin/.kube/config
+          enabled: true          # Enable Kubernetes integration
+          namespace: topgun      # The Kubernetes namespace to read secrets from
+          secrets: true          # Enable reading Kubernetes secrets
+          sources:
+            - secrets
+        native:
+          searchLocations:
+            - file:${FILE_CONFIG_BASE_PATH}/configurations/{application}
+            - file:${FILE_CONFIG_BASE_PATH}/env-vars/${ENV_NAMESPACE}/application/{application}
+            - file:${FILE_CONFIG_BASE_PATH}/env-vars/${ENV_NAMESPACE}/infra
+
+
+
+
+
+
+
+
+
+
+
+
+
+          #spring:
+          #cloud:
+          #config:
+          #server:
+          # Native configuration to load from the filesystem
+          #native:
+          #searchLocations: file:/Users/admin/Documents/config-poc/configurations/{application}  # Path to your configurations
+          #searchLocations: file:/Users/admin/Documents/config-poc/configurations/{application},file:/Users/admin/Documents/config-poc/env-vars/{env}/application/{application}
