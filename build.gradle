@@ -20,26 +20,17 @@ repositories {
 }
 
 ext {
-	set('springCloudVersion', "2024.0.0")
+	set('springCloudVersion', "2023.0.0")
 }
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
 	implementation 'org.springframework.cloud:spring-cloud-config-server'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.cloud:spring-cloud-starter-kubernetes-fabric8-config:3.2.0'
+	//implementation 'org.springframework.cloud:spring-cloud-starter-kubernetes-client-config'
 
-	// Kubernetes integration for Spring Cloud
-	//implementation 'org.springframework.cloud:spring-cloud-starter-kubernetes:1.1.10.RELEASE'
-	//implementation 'org.springframework.cloud:spring-cloud-starter-kubernetes-config:1.1.10.RELEASE'
 
-	// Optional for security if you plan to secure your config server
-	//implementation 'org.springframework.boot:spring-boot-starter-security'
-
-	// Optional: Lombok for cleaner code
-	implementation 'org.projectlombok:lombok'
-	compileOnly 'org.projectlombok:lombok'
-
-	// Optional: Spring Boot DevTools for easier development
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 }
 
 

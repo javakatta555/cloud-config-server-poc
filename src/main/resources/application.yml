@@ -1,20 +1,20 @@
 server:
-  port: 8081  # Port for the Config Server
+  port: 9003
+
 
 
 spring:
   cloud:
+    kubernetes:
+      secrets:
+        enableApi: true
     config:
       server:
-        native:
-          searchLocations:
-            - file:${FILE_CONFIG_BASE_PATH}/configurations/{application}
-            - file:${FILE_CONFIG_BASE_PATH}/env-vars/${ENV_NAMESPACE}/application/{application}
-            - file:${FILE_CONFIG_BASE_PATH}/env-vars/${ENV_NAMESPACE}/infra
-
-
-
-
+        composite:
+          - type: kubernetes
+            secrets:
+              name: my-secret
+              namespace: default
 
 
 
